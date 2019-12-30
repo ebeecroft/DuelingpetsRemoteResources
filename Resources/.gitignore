@@ -1,0 +1,4 @@
+/uploads/tmp/*/*.ogv
+/uploads/tmp/*/*.mp4
+/uploads/*/ogv/*
+/uploads/*/mp4/*
