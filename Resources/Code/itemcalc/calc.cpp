@@ -3,22 +3,21 @@
 void createitem(int petStats[], int& cost);
 int main(int argc, char* argv[])
 {
-   if(argc == 25) //5
+   if(argc == 18)
    {
-      //Pet creation code here
+      //Item creation code here
       int cost = 0;
       int count = 1;
-      int limit = 24;
-      //22 Elements 0 - 21
+      int limit = 17;
       int itemStats[limit];
-      //Initializes the pet's base stats
+
+      //Initializes the item's base stats
       for(int index = 0; index < limit; index++)
       {
          itemStats[index] = atoi(argv[count]);
          count++;
       }
-      createitem(itemStats, cost); //Doesn't need level
-      //Remember to return negatives for cost or level to indicate errors.
+      createitem(itemStats, cost);
       std::cout << cost;
    }
 }
