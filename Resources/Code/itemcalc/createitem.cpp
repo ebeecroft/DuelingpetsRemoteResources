@@ -4,19 +4,19 @@ int getCost(int petStats[], int baseCost);
 
 void createitem(int petStats[], int& cost)
 {
-   if((petStats[14] > 0 && petStats[15] > 0) && (petStats[4] >= 0 && petStats[9] >= 0))
+   if((petStats[13] > 0 && petStats[14] > 0) && (petStats[4] >= 0 && petStats[9] >= 0))
    {
       cost = getCost(petStats, petStats[16]);
    }
    else
    {
-      if(petStats[14] <= 0)
+      if(petStats[4] < 0)
          cost = -1;
-      else if(petStats[15] <= 0)
-         cost = -2;
-      else if(petStats[4] < 0)
-         cost = -3;
       else if(petStats[9] < 0)
+         cost = -2;
+      else if(petStats[13] <= 0)
+         cost = -3;
+      else if(petStats[14] <= 0)
          cost = -4;
    }
 }
