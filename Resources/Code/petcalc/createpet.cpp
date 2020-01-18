@@ -79,7 +79,7 @@ int getLevel(int petStats[])
       //Determines the level of the pet
       int starterValue = 68;
       int additionalLevel = (physical + magical + stamina - starterValue);
-      if(additionalLevel % 14 != 0) level = -12;
+      if((additionalLevel < 0) || (additionalLevel % 14 != 0)) level = -12;
       else level = 2 + (additionalLevel / 14);
    }
    return level;
