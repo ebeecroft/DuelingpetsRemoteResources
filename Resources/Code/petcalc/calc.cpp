@@ -3,12 +3,12 @@
 void createpet(int petStats[], int& level, int& cost);
 int main(int argc, char* argv[])
 {
-   if(argc == 18)
+   if(argc == 17)
    {
       //Pet creation code here
       int level = 0, cost = 0;
       int count = 1;
-      int limit = 17;
+      int limit = 16;
       int petStats[limit];
 
       //Initializes the pet's base stats

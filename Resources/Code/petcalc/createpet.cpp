@@ -10,7 +10,7 @@ void createpet(int petStats[], int& level, int& cost)
       level = getLevel(petStats);
 
       //Short hand if statement for determining if there is an error
-      if(level > 0) cost = getCost(petStats, level, petStats[16]);
+      if(level > 0) cost = getCost(petStats, level, petStats[15]);
       else cost = -1;
    }
    else
@@ -111,16 +111,14 @@ int getCost(int petStats[], int level, int baseCost)
 
    //User values(80 points)
    double rarityValue = (petStats[14] * 40); //Can't be zero
-   double petValue = (petStats[15] * 0.4); //Can be zero
    double levelCost = 20 * level; //Can't be lower then 2
 
    //Stores the value of the various pet costs
    double physicalCost = healthValue + attackValue + defenseValue + agilityValue + strengthValue;
    double magicalCost = mpValue + matkValue + mdefValue + magiValue + mstrValue;
    double staminaCost = hungerValue + thirstValue + funValue + livesValue;
-   double commonalityCost = rarityValue + petValue;
 
    //Calculates the cost of the current pet
-   int cost = baseCost + round((levelCost + physicalCost + magicalCost + staminaCost + commonalityCost));
+   int cost = baseCost + round((levelCost + physicalCost + magicalCost + staminaCost + rarityValue));
    return cost;
 }
