@@ -2,7 +2,7 @@ C++SRC = $(wildcard *.cpp)
 C++OBJ = $(C++SRC:.cpp=.o)
 
 donate: $(C++OBJ)
-	g++ -g -o calz $(C++OBJ)
+	g++ -g -o calc $(C++OBJ)
 
 clean:
-	rm -f $(C++OBJ) calz
+	rm -f $(C++OBJ) calc
