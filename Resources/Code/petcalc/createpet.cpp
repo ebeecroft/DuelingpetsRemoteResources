@@ -37,9 +37,9 @@ int getLevel(int petStats[])
    int magi = petStats[8]; //Makes no sense if mp 0
    int mstr = petStats[9]; //Makes no sense if mp 0
 
-   //Stamina(28 points)
-   int hunger = petStats[10]; //Hunger can't be 0 Min hunger: 10
-   int thirst = petStats[11]; //Thirst can't be 0 Min thirst: 10
+   //Stamina(40 points)
+   int hunger = petStats[10]; //Hunger can't be 0 Min hunger: 16
+   int thirst = petStats[11]; //Thirst can't be 0 Min thirst: 16
    int fun = petStats[12]; //Fun can't be 0 Min fun: 8
    int lives = petStats[13]; // can be 0
 
@@ -63,9 +63,9 @@ int getLevel(int petStats[])
       level = -7;
    else if(mp > 0 && mp < 4)
       level = -8;
-   else if(hunger < 10)
+   else if(hunger < 16)
       level = -9;
-   else if(thirst < 10)
+   else if(thirst < 16)
       level = -10;
    else if(fun < 8)
       level = -11;
@@ -77,7 +77,7 @@ int getLevel(int petStats[])
       int stamina = hunger + thirst + fun + lives;
 
       //Determines the level of the pet
-      int starterValue = 68;
+      int starterValue = 80;
       int additionalLevel = (physical + magical + stamina - starterValue);
       if((additionalLevel < 0) || (additionalLevel % 14 != 0)) level = -12;
       else level = 2 + (additionalLevel / 14);
@@ -101,13 +101,13 @@ int getCost(int petStats[], int level, int baseCost)
    double magiValue = (petStats[8] * 4);
    double mstrValue = (petStats[9] * 8);
 
-   //Stamina cost(280 points)Base like cost
+   //Stamina cost(400 points)Base like cost
    double hungerValue = (petStats[10] * 10);
    double thirstValue = (petStats[11] * 10);
    double funValue = (petStats[12] * 10);
    double livesValue = (petStats[13] * 30);
 
-   //Prior to user value 380 points
+   //Prior to user value 436 points
 
    //User values(80 points)
    double rarityValue = (petStats[14] * 40); //Can't be zero
