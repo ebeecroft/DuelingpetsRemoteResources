@@ -23,11 +23,11 @@ void createpet(int petStats[], int& level, int& cost)
 
 int getLevel(int petStats[])
 {
-   //Physical abilities(30 points)
+   //Physical abilities(34 points)
    int health = petStats[0]; //Health can't be 0 Min health: 16
    int attack = petStats[1]; //Can't be 0 Min attack: 2
    int defense = petStats[2]; //Can't be 0 Min defense: 2
-   int agility = petStats[3]; //Can't be 0 Min speed: 2
+   int agility = petStats[3]; //Can't be 0 Min speed: 6
    int strength = petStats[4]; //Strength can't be 0 Min strength: 8
 
    //Magic abilities(Should be allowed to be changed)
@@ -53,7 +53,7 @@ int getLevel(int petStats[])
       level = -2;
    else if(defense < 2)
       level = -3;
-   else if(agility < 2)
+   else if(agility < 6)
       level = -4;
    else if(strength < 8)
       level = -5;
@@ -77,7 +77,7 @@ int getLevel(int petStats[])
       int stamina = hunger + thirst + fun + lives;
 
       //Determines the level of the pet
-      int starterValue = 84;
+      int starterValue = 88;
       int additionalLevel = (physical + magical + stamina - starterValue);
       if((additionalLevel < 0) || (additionalLevel % 14 != 0)) level = -12;
       else level = 2 + (additionalLevel / 14);
@@ -87,7 +87,7 @@ int getLevel(int petStats[])
 
 int getCost(int petStats[], int level, int baseCost)
 {
-   //Physical cost(36 points)
+   //Physical cost(60 points)
    double healthValue = (petStats[0] * 0.5);
    double attackValue = (petStats[1] * 2);
    double defenseValue = (petStats[2] * 2);
@@ -101,15 +101,13 @@ int getCost(int petStats[], int level, int baseCost)
    double magiValue = (petStats[8] * 4);
    double mstrValue = (petStats[9] * 8);
 
-   //Stamina cost(400 points)Base like cost
+   //Stamina cost(400 points) with 0 lives
    double hungerValue = (petStats[10] * 10);
    double thirstValue = (petStats[11] * 10);
    double funValue = (petStats[12] * 10);
    double livesValue = (petStats[13] * 30);
 
-   //Prior to user value 436 points
-
-   //User values(80 points)
+   //User values(80 points) Total: 540
    double rarityValue = (petStats[14] * 40); //Can't be zero
    double levelCost = 20 * level; //Can't be lower then 2
 
