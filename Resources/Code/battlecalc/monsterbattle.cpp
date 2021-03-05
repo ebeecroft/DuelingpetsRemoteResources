@@ -15,40 +15,65 @@ void monsterbattle(int petStats[], int monsterStats[], int& petDamage, int& mons
    double combinedAgility = petStats[5] + monsterStats[5];
    double petAccuracy = (double) ((petStats[5] / combinedAgility));
    double monsterAccuracy = (double) ((monsterStats[5] / combinedAgility));
-   double accuracy1 = getAccuracy();
+   double accuracyLevel1 = getAccuracy();
+   double multiplier = 1.0;
 
    //Determines the amount of damage a pet does
-   if(petAccuracy >= accuracy1)
+   if(accuracyLevel1 <= petAccuracy)
    {
-      int attack = round((petStats[0] * petStats[3]) * 3.5);
-      int defense = round((monsterStats[0] * monsterStats[4]) * 1.5);
-      int attackvalue = ((rand() % attack) + 1);
-      int defensevalue = (rand() % defense);
-      petDamage = attackvalue - defensevalue;
-      if(petDamage > 0)
-         monsterHPLeft = monsterStats[1] - petDamage;
-      else
-         monsterHPLeft = monsterStats[1];
+      //Normal Damage or Critical Hit
+      int diceRoll = ((rand() % 80) + 1);
+      if(diceRoll <= 4) multiplier = 1.25;
+      else multiplier = 0.75;
+   }
+   else
+   {
+      //Determines if the pet misses or does 1/4 damage
+      int diceRoll = ((rand() % 20) + 1);
+      if(diceRoll <= 6) multiplier = 0;
+      else multiplier = 0.125;
+   }
+
+   //Evaluates the result of the pet's attack
+   if(multiplier != 0)
+   {
+      int attack = round((petStats[0] * petStats[3]) * multiplier);
+      int defense = monsterStats[0] + monsterStats[4];
+      petDamage = attack - (rand() % defense);
+      if(petDamage > 0) monsterHPLeft = monsterStats[1] - petDamage;
+      else monsterHPLeft = monsterStats[1];
    }
    else
    {
       petDamage = 0;
       monsterHPLeft = monsterStats[1];
    }
-   
+
    //Determines the amount of damage a monster does
-   double accuracy2 = getAccuracy();
-   if(monsterAccuracy >= accuracy2)
+   double accuracyLevel2 = getAccuracy();
+   if(accuracyLevel2 <= monsterAccuracy)
    {
-      int attack = round((monsterStats[0] * monsterStats[3]) * 2.75);
-      int defense = round((petStats[4] * petStats[6]) * 1.5);
-      int attackvalue = ((rand() % attack) + 1);
-      int defensevalue = (rand() % defense);
-      monsterDamage = attackvalue - defensevalue;
-      if(monsterDamage > 0)
-         petHPLeft = petStats[1] - monsterDamage;
-      else
-         petHPLeft = petStats[1];
+      //Normal Damage or Critical Hit
+      int diceRoll = ((rand() % 80) + 1);
+      if(diceRoll <= 4) multiplier = 1.25;
+      else multiplier = 0.75;
+   }
+   else
+   {
+      //Determines if the mon misses or does 1/4 damage
+      int diceRoll = ((rand() % 20) + 1);
+      if(diceRoll <= 6) multiplier = 0;
+      else multiplier = 0.125;
+   }
+
+   //Evaluates the result of the monster's attack
+   if(multiplier != 0)
+   {
+      int attack = round((monsterStats[0] * monsterStats[3]) * multiplier);
+      int defense = petStats[4] + petStats[6];
+      monsterDamage = attack - (rand() % defense);
+      if(monsterDamage > 0) petHPLeft = petStats[1] - monsterDamage;
+      else petHPLeft = petStats[1];
    }
    else
    {

@@ -23,12 +23,13 @@ void createpet(int petStats[], int& level, int& cost)
 
 int getLevel(int petStats[])
 {
-   //Physical abilities(34 points)
+   //trying atk 5 def 6 speed 9 str 10 hp 16 Add 4 to free points
+   //Physical abilities(34 points) Atk 2, Def 10, speed 6, hp 16.
    int health = petStats[0]; //Health can't be 0 Min health: 16
-   int attack = petStats[1]; //Can't be 0 Min attack: 2
-   int defense = petStats[2]; //Can't be 0 Min defense: 2
-   int agility = petStats[3]; //Can't be 0 Min speed: 6
-   int strength = petStats[4]; //Strength can't be 0 Min strength: 8
+   int attack = petStats[1]; //Can't be 0 Min attack: 5
+   int defense = petStats[2]; //Can't be 0 Min defense: 10
+   int agility = petStats[3]; //Can't be 0 Min speed: 9
+   int strength = petStats[4]; //Strength can't be 0 Min strength: 2
 
    //Magic abilities(Should be allowed to be changed)
    int mp = petStats[5]; //can be 0, but has a min of 4
@@ -43,7 +44,7 @@ int getLevel(int petStats[])
    int fun = petStats[12]; //Fun can't be 0 Min fun: 8
    int lives = petStats[13]; // can be 0
 
-   //14 points of stats are free to be assigned per level
+   //18 points of stats are free to be assigned per level
    int level = 0;
 
    //Checks to see if the value is below the minimum

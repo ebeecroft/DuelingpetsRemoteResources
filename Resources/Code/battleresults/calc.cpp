@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
          health[index] = atoi(argv[count]);
          count++;
       }
-      
+
       //Returns the battle status back to the website
       result = battleresult(health);
       std::cout << result;
@@ -29,7 +29,7 @@ std::string battleresult(int health[])
    std::string result;
    if(health[0] > 0)
       result = "Win";
-   else if(health[0] == 0 && health[1] == 0)
+   else if(health[0] <= 0 && health[1] <= 0)
       result = "Draw";
    else
    {
