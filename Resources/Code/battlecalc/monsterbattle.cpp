@@ -30,7 +30,7 @@ void monsterbattle(int petStats[], int monsterStats[], int& petDamage, int& mons
    {
       //Determines if the pet misses or does 1/4 damage
       int diceRoll = ((rand() % 20) + 1);
-      if(diceRoll <= 6) multiplier = 0;
+      if(diceRoll <= 3) multiplier = 0;
       else multiplier = 0.125;
    }
 
@@ -39,7 +39,8 @@ void monsterbattle(int petStats[], int monsterStats[], int& petDamage, int& mons
    {
       int attack = round((petStats[0] * petStats[3]) * multiplier);
       int defense = monsterStats[0] + monsterStats[4];
-      petDamage = attack - (rand() % defense);
+      if(attack > 1) petDamage = attack - (rand() % defense);
+      else petDamage = 1;
       if(petDamage > 0) monsterHPLeft = monsterStats[1] - petDamage;
       else monsterHPLeft = monsterStats[1];
    }
@@ -62,7 +63,7 @@ void monsterbattle(int petStats[], int monsterStats[], int& petDamage, int& mons
    {
       //Determines if the mon misses or does 1/4 damage
       int diceRoll = ((rand() % 20) + 1);
-      if(diceRoll <= 6) multiplier = 0;
+      if(diceRoll <= 3) multiplier = 0;
       else multiplier = 0.125;
    }
 
@@ -71,7 +72,8 @@ void monsterbattle(int petStats[], int monsterStats[], int& petDamage, int& mons
    {
       int attack = round((monsterStats[0] * monsterStats[3]) * multiplier);
       int defense = petStats[4] + petStats[6];
-      monsterDamage = attack - (rand() % defense);
+      if(attack > 1) monsterDamage = attack - (rand() % defense);
+      else monsterDamage = 1;
       if(monsterDamage > 0) petHPLeft = petStats[1] - monsterDamage;
       else petHPLeft = petStats[1];
    }
